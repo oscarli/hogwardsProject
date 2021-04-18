@@ -42,10 +42,10 @@ class TestWework:
         # 在当前页面点击通讯录
         self.driver.find_element_by_id("menu_contacts").click()
         # 获取cookie信息
-        cookie = self.driver.get_cookies()
+        cookies = self.driver.get_cookies()
         # 把cookie存如yaml文件内
-        with open("data.yaml","w",encoding="UTF-8") as f:
-            yaml.dump(cookie,f)
+        with open("data.yaml", "w", encoding="UTF-8") as f:
+            yaml.dump(cookies, f)
 
 
 def test_cookie():
