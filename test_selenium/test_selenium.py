@@ -5,7 +5,6 @@
 @desc: 
 """
 from time import sleep
-
 import yaml
 from selenium import webdriver
 
@@ -16,7 +15,7 @@ class TestDemo:
         # Chrome C要大写；
         # 实例化 driver
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(10)  # 隐式等待，设置10秒
 
     def teardown(self):
         self.driver.quit()
@@ -30,10 +29,10 @@ class TestDemo:
         assert ele
 
 
-# 复用浏览器
+# 复用浏览器，可用来获取已有浏览器打开网站的cookie信息，用于登录
 class TestWework:
     def test_wework(self):
-        # 复用只支持chrome浏览器
+        # 复用只支持chrome浏览器，命令行需要先启动调试模式：Google\ Chrome --remote-debugging-port=9222
         opt = webdriver.ChromeOptions()
         # 设置debug地址
         opt.debugger_address = "127.0.0.1:9222"
@@ -70,11 +69,12 @@ def test_cookie_v2():
     driver.get("https://work.weixin.qq.com/wework_admin/loginpage_wx?")
     with open("data.yaml", encoding="UTF-8") as f:
         yaml_data = yaml.safe_load(f)
-        print(yaml_data)
         for cookie in yaml_data:
             driver.add_cookie(cookie)
     driver.get("https://work.weixin.qq.com/wework_admin/frame#index")
-    sleep(5)
+    # 在当前页面点击通讯录
+    driver.find_element_by_id("menu_contacts").click()
+    sleep(3)
 
 
 
