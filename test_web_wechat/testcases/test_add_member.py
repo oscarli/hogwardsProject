@@ -11,6 +11,9 @@ class TestAddMember:
     def setup_class(self):
         self.main_page = MainPage()
 
+    def teardown_class(self):
+        self.main_page.quit()
+
     # 1. 实现测试数据和页面对象分离
     @pytest.mark.parametrize("username, accid, phone", [("伊泽瑞尔11", "00901", "13344445525")])
     def test_add_member(self, username, accid, phone):

@@ -25,9 +25,13 @@ class BasePage:
                     self.driver.add_cookie(cookie)
             self.driver.get("https://work.weixin.qq.com/wework_admin/frame#index")
             # 隐式等待，每一次调用find 方法，就会轮询查找元素是否存在
-            self.driver.implicitly_wait(3)
+            self.driver.implicitly_wait(5)
         else:
             self.driver = base_driver
+
+    def quit(self):
+        self.driver.quit()
+        print("=======[quit driver succeed!]=======")
 
     def find(self, by, ele=None):
         """

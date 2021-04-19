@@ -47,6 +47,16 @@ class TestWework:
             yaml.dump(cookies, f)
 
 
+def test_save_cookie():
+    driver = webdriver.Chrome()
+    driver.get("https://work.weixin.qq.com/wework_admin/loginpage_wx?")
+    sleep(10)
+    cookie = driver.get_cookies()
+    # 把cookie存如yaml文件内
+    with open("../test_web_wechat/testcases/data.yaml", "w", encoding="UTF-8") as f:
+        yaml.dump(cookie, f)
+
+
 def test_cookie():
     # 实例化 driver
     driver = webdriver.Chrome()
