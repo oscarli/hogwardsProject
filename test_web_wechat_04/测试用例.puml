@@ -17,22 +17,16 @@ participant 添加部门 as add_department
 participant 导入通讯录 as import_addressBook
 
 
-
 main -> contact: 点击通讯录
-
 main -> add_member: 点击添加成员
-
 main -> import_addressBook: 点击导入通讯录
-
 main -> CustomerContact: 点击客户联系
-
 contact -> add_department: 点击添加部门
-
 contact -> add_member: 点击添加成员
-
 contact -> import_addressBook :点击批量导入/导出-文件导入按钮
-
-add_member -> contact: 添加成功后
+add_member -> contact: 添加成功保存后
+add_member -> add_member: 保存并继续添加
+add_member -> add_department: 点击添加部门
 
 import_addressBook -> contact: 导入成功后
 

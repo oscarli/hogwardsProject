@@ -25,7 +25,6 @@ class AddMemberPage(BasePage):
         # 1. 其他页面的 实例
         # 2. 用例所需要的断言
         # 注意： 不要写成 ContactPage
-        # 快捷导入  alt + 回车
         return ContactPage(self.driver)
 
     def add_member_fail(self, username, accid, phone):

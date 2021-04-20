@@ -34,7 +34,7 @@ class BasePage:
         else:
             self.driver = base_driver
         # 最大化浏览器窗口
-        # self.driver.maximize_window()
+        self.driver.maximize_window()
         # 设置隐式等待时间，每一次调用find方法，就会轮询查找元素是否存在
         self.driver.implicitly_wait(5)
 
@@ -42,26 +42,26 @@ class BasePage:
         self.driver.quit()
         print("=======[quit driver succeed!]=======")
 
-    def find(self, by, ele=None):
+    def find(self, by, element=None):
         """
         :param by: 定位方式 css, xpath, id
-        :param ele: 元素定位信息
+        :param element: 元素定位信息
         :return:
         """
         # 两种传入定位元素的方式，提高代码的兼容性; 如果传入的是元祖,那就只有一个参数
-        if ele is None:
+        if element is None:
             # 比如传入username = (By.ID, "username")
             # * 的作用是解元祖self.driver.find_element(*username) 等同于
             # self.driver.find_element(By.ID, "username")
             return self.driver.find_element(*by)
         else:
-            return self.driver.find_element(by, ele)
+            return self.driver.find_element(by, element)
 
-    def finds(self, by, ele=None):
-        if ele is None:
+    def finds(self, by, elements=None):
+        if elements is None:
             return self.driver.find_elements(*by)
         else:
-            return self.driver.find_elements(by, ele)
+            return self.driver.find_elements(by, elements)
 
     # 获取cookie并写入文件保存
     def get_and_save_cookies(self):
@@ -83,7 +83,7 @@ class BasePage:
 
     # def cookiesMultiplexing(self):
     #     # 获取当前页的cookies并记录
-    #     self.get_cookie_and_write()
+    #     self.get_and_save_cookies()
     #
     #     # # 清除浏览器cookies
     #     # self.del_cookies()
@@ -147,4 +147,3 @@ class BasePage:
 
 if __name__ == '__main__':
     BasePage().get_and_save_cookies()
-    # pass

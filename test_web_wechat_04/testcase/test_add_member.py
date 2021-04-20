@@ -16,7 +16,7 @@ class TestAddMember:
         # self.main_page.quit()
 
     # 1. 实现测试数据和页面对象分离
-    @pytest.mark.parametrize("username, accid, phone", [("伊泽瑞尔11", "00901", "13344445525")])
+    @pytest.mark.parametrize("username, accid, phone", [("test201", "00901", "13344445525")])
     def test_add_member(self, username, accid, phone):
         # 1. 跳转到添加成员页面  2. 添加成员   3. 获取成员列表
         name_list = self.main_page.goto_add_member().add_member(username, accid, phone).get_contact_list()
