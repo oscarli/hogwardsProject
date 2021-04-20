@@ -1,13 +1,15 @@
+
 from selenium.webdriver.common.by import By
-from test_web_wechat.page.base_page import BasePage
-from test_web_wechat.page.contact import ContactPage
+
+from test_web_wechat_04.page.base_page import BasePage
+from test_web_wechat_04.page.contact import ContactPage
 
 
 class AddMemberPage(BasePage):
     # 设定为元祖
     # 页面元素不需要让 业务用例了解，所以要加私有
     __ele_username = (By.ID, "username")
-    ele_accid = (By.ID, "memberAdd_accid")
+    ele_accid = (By.ID, "memberAdd_acctid")
     ele_phone = (By.ID, "memberAdd_phone")
 
     def add_member(self, username, accid, phone):

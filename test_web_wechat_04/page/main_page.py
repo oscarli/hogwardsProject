@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
-from test_web_wechat.page.add_member import AddMemberPage
-from test_web_wechat.page.base_page import BasePage
+from test_web_wechat_04.page.add_member import AddMemberPage
+from test_web_wechat_04.page.base_page import BasePage
 
 
 class MainPage(BasePage):
@@ -23,5 +23,5 @@ class MainPage(BasePage):
         """
         # 返回要跳转页面的实例对象
 
-        self.driver.find_element(By.CSS_SELECTOR, ".ww_indexImg_AddMember").click()
+        self.driver.find_element(By.CSS_SELECTOR, "#js_contacts46 > div > div.member_colRight > div > div.js_party_info > div.js_has_member > div:nth-child(1) > a.qui_btn.ww_btn.js_add_member").click()
         return AddMemberPage(self.driver)

@@ -1,11 +1,12 @@
 from selenium.webdriver.common.by import By
 
-from test_web_wechat.page.base_page import BasePage
+from test_web_wechat_04.page.base_page import BasePage
 
 
 class ContactPage(BasePage):
     def get_contact_list(self):
         # 获取的是元素列表
+        # ele_list = self.driver.find_elements(By.CSS_SELECTOR, ".member_colRight_memberTable_td:nth-child(2)")
         ele_list = self.driver.find_elements(By.CSS_SELECTOR, ".member_colRight_memberTable_td:nth-child(2)")
         print(ele_list)
         name_list = []
@@ -14,3 +15,7 @@ class ContactPage(BasePage):
             name_list.append(ele.text)
         print(name_list)
         return name_list
+
+
+if __name__ == '__main__':
+    ContactPage().get_contact_list()

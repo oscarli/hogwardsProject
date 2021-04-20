@@ -52,8 +52,8 @@ def test_save_cookie():
     driver.get("https://work.weixin.qq.com/wework_admin/loginpage_wx?")
     sleep(10)
     cookie = driver.get_cookies()
-    # 把cookie存如yaml文件内
-    with open("../test_web_wechat/testcases/data.yaml", "w", encoding="UTF-8") as f:
+    # 把cookie存人yaml文件内
+    with open("../test_web_wechat_04/data/cookie.yaml", "w", encoding="UTF-8") as f:
         yaml.dump(cookie, f)
 
 

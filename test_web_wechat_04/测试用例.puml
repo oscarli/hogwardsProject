@@ -1,0 +1,39 @@
+@startuml
+
+participant 企业微信首页 as main
+
+participant 通讯录 as contact
+
+participant 应用管理 as ApplicationManagement
+
+participant 客户联系 as CustomerContact
+
+participant 管理工具 as managementTool
+
+participant 添加成员 as add_member
+
+participant 添加部门 as add_department
+
+participant 导入通讯录 as import_addressBook
+
+
+
+main -> contact: 点击通讯录
+
+main -> add_member: 点击添加成员
+
+main -> import_addressBook: 点击导入通讯录
+
+main -> CustomerContact: 点击客户联系
+
+contact -> add_department: 点击添加部门
+
+contact -> add_member: 点击添加成员
+
+contact -> import_addressBook :点击批量导入/导出-文件导入按钮
+
+add_member -> contact: 添加成功后
+
+import_addressBook -> contact: 导入成功后
+
+@enduml
