@@ -8,7 +8,8 @@ class ContactPage(BasePage):
     __add_member = (By.CSS_SELECTOR, ".js_add_member:nth-child(2)")
     __plus_button = (By.CSS_SELECTOR, ".member_colLeft_top_addBtn")
     __add_department = (By.CSS_SELECTOR, ".js_create_party")
-    __department_list = (By.CSS_SELECTOR, ".jstree-leaf a")
+    # __department_list = (By.CSS_SELECTOR, ".jstree-leaf a")
+    __department_list = (By.CSS_SELECTOR, ".jstree-anchor")
 
     def get_contact_list(self):
         # 获取的是元素列表
@@ -20,6 +21,7 @@ class ContactPage(BasePage):
         return name_list
 
     def get_department(self):
+        # 每次调用前刷新界面，确保获取最新的页面数据
         self.driver.refresh()
         departments = self.finds(self.__department_list)
         titlist = [element.text for element in departments]
@@ -30,7 +32,7 @@ class ContactPage(BasePage):
         self.find(self.__add_member).click()
         return AddMemberPage(self.driver)
 
-    def goto_department(self):
+    def goto_add_department(self):
         self.find(self.__plus_button).click()
         self.find(self.__add_department).click()
         return AddDepartmentPage(self.driver)

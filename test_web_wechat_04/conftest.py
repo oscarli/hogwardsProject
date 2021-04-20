@@ -11,7 +11,7 @@ def main_page():
 
 
 # 实现ids中可以显示中文
-def pytest_collection_modify_items(items: list):
+def pytest_collection_modifyitems(items: list):
     for item in items:
         item.name = item.name.encode('utf-8').decode('unicode-escape')
         item._nodeid = item.nodeid.encode('utf-8').decode('unicode-escape')
